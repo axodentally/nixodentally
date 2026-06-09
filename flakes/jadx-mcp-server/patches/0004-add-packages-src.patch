@@ -1,0 +1,12 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -13,5 +13,9 @@
+ [tool.setuptools]
+ py-modules = ["jadx_mcp_server"]
+ 
++[tool.setuptools.packages.find]
++where = ["."]
++include = ["src*"]
++
+ [project.scripts]
+ jadx_mcp_server = "jadx_mcp_server:main"

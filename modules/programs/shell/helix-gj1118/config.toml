@@ -1,0 +1,131 @@
+theme = "papercolor-light"
+
+# different light and dark themes
+# [theme]
+# light = "papercolor-light"
+# dark = "papercolor-dark"
+
+
+[editor]
+color-modes = true
+rulers = [120]
+text-width = 120
+
+
+[editor.bufferline]
+render-mode = "always"
+separator = ""
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
+# see here https://github.com/helix-editor/helix/pull/15221
+auto-document-highlight = true 
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+left = [
+    "mode",
+    "file-name",
+    "function-name",
+    "version-control",
+    "read-only-indicator",
+    "file-modification-indicator"
+]
+right = [
+    "spinner",
+    "diagnostics",
+    "file-type",
+    "file-encoding",
+    "selections",
+    "register",
+    "position",
+]
+
+[editor.statusline.mode]
+insert = "INSERT"
+normal = "NORMAL"
+select = "SELECT"
+
+
+# [editor.inline-blame]
+# # Show inline blame on specific lines (default: "never")
+# # Options: "cursor-line", "all", "never"
+# show = "cursor-line"
+
+# # Format string for blame display
+# # Available placeholders: {author}, {commit}, {time-ago}, {title}
+# format = "{author} • {time-ago} • {title}"
+
+# # Auto-fetch blame information (default: false)
+# auto-fetch = false
+
+# ==== cmdline and icons ====
+
+# [editor.cmdline]
+# use-full-height = true
+# # Command line style: "bottom" (default) or "popup" (noice.nvim style)
+# style = "popup"
+
+# # Show command type icons (default: true)
+# show-icons = true
+
+# # Popup dimensions
+# min-popup-width = 40    # Minimum width for popup cmdline
+# max-popup-width = 80    # Maximum width for popup cmdline
+
+# [editor.cmdline.icons]
+# search = "/"
+# command = ":"
+# shell = "$"
+# general = ">"
+
+# # ========================================== Notifications ==========================================
+# [editor.notifications]
+# enable = true
+# padding = 0
+# shadow = { enable = false }
+
+
+# =============================================== Icons ===============================================
+[icons.kind]
+enabled = true
+
+[icons.vcs]
+enabled = true
+
+[icons.mime]
+enabled = true
+
+[icons.diagnostic]
+enabled = true
+error = ""
+warning = " "
+info = " "
+hint = ""
+
+# # ==== keys ====
+
+[keys.normal]
+C-l = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
+C-p = [":sh typst watch ./*.typ & zathura ./*.pdf"]
+# Yazi in helix
+# see: https://yazi-rs.github.io/docs/tips/#helix
+C-y = [
+	':sh rm -f /tmp/unique-ca1ea106',
+	':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-ca1ea106',
+	':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+	':open %sh{cat /tmp/unique-ca1ea106}',
+	':redraw',
+	':set mouse false',
+  ':set mouse true',
+]
+
+[keys.normal.space]
+o = "file_picker_in_current_buffer_directory"
+
