@@ -37,15 +37,17 @@
               ];
               "https://${inputs.nix-secrets.git-oauth.secrets-repo.domain}" = {
                 oauthClientId = "${inputs.nix-secrets.git-oauth.secrets-repo.clientId}";
+                oauthScopes = "read_repository write_repository";
                 oauthAuthURL = "/oauth/authorize";
                 oauthTokenURL = "/oauth/token";
-                oauthDeviceURL = "/oauth/authorize_device";
+                oauthDeviceAuthURL = "/oauth/authorize_device";
               };
               "https://${inputs.nix-secrets.git-oauth.esa-repo.domain}" = {
                 oauthClientId = "${inputs.nix-secrets.git-oauth.esa-repo.clientId}";
+                oauthScopes = "read_repository write_repository";
                 oauthAuthURL = "/oauth/authorize";
                 oauthTokenURL = "/oauth/token";
-                oauthDeviceURL = "/oauth/authorize_device";
+                oauthDeviceAuthURL = "/oauth/authorize_device";
               };
             };
           };
