@@ -23,7 +23,7 @@ in
         meta-shell
         advanced-git-tools
         helix-gj1118
-        direnv-devenv
+        devenv
 
         opencode
       ];

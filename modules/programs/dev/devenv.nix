@@ -1,12 +1,9 @@
 {
-  flake.modules.homeManager.direnv-devenv =
+  flake.modules.homeManager.devenv =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
         unstable.devenv
       ];
-      programs.direnv = {
-        enable = true;
-      };
     };
 }
