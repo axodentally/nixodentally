@@ -31,6 +31,15 @@
                 "ruff"
                 "basedpyright"
               ];
+              formatter = {
+                command = "ruff";
+                args = [
+                  "format"
+                  "--line-length"
+                  "88"
+                  "-"
+                ];
+              };
               auto-format = true;
             }
 
