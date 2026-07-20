@@ -6,7 +6,6 @@
         # advanced core utils etc
         trash-cli # safer rm
         grc # colours - though probably unmaintained!
-        fzf # fuzzy find
         zoxide # z, autojump etc like
         eza # A modern replacement for ‘ls’
         dysk # modern df replacement
@@ -84,6 +83,10 @@
           config = {
             style = "plain";
           };
+        };
+        fzf = {
+          enable = true;
+          enableFishIntegration = true;
         };
         nh = {
           enable = true;
