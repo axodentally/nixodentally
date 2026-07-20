@@ -20,7 +20,9 @@
         unzip
         p7zip
 
+        # file/directory operations
         ripgrep # recursively searches directories for a regex pattern
+        scooter # interactive string replacement across files
 
         # networking tools
         wget
