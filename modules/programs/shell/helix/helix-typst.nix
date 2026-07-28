@@ -4,6 +4,7 @@
     {
       programs.helix = {
         extraPackages = with pkgs; [
+          typst
           zathura # pdf viewer, may be obsolete
           ltex-ls-plus
           tinymist
