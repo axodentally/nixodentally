@@ -22,6 +22,7 @@ in
           laptop-powersaving
           linux-latest
           flatpak # TODO: check if correctly defined in the module!
+          key-remapping
 
           # peripherals
           logitech
