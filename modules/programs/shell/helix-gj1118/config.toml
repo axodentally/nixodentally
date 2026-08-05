@@ -86,10 +86,9 @@ select = "SELECT"
 # general = ">"
 
 # # ========================================== Notifications ==========================================
-# [editor.notifications]
-# enable = true
-# padding = 0
-# shadow = { enable = false }
+[editor.notifications]
+enable = true
+style = "statusline"
 
 
 # =============================================== Icons ===============================================
