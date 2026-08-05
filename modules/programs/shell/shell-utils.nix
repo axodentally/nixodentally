@@ -66,6 +66,8 @@
 
         wl-clipboard
 
+        # shell helper / autocompletion etc
+        tlrc # better man pages
       ];
 
       programs = {
