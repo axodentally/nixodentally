@@ -26,6 +26,7 @@ in
         devenv
 
         opencode
+        aichat
       ];
 
       config = {
