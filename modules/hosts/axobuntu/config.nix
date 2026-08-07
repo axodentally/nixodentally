@@ -27,6 +27,8 @@ in
 
         opencode
         aichat
+
+        openjdk21
       ];
 
       config = {
