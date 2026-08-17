@@ -60,7 +60,7 @@
                 in
                 {
                   nixpkgs.expr = "import ${myFlake}.inputs.nixpkgs { }";
-                  formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+                  formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
                   options =
                     (lib.optionalAttrs isNixOS {
                       nixos.expr = nixosOpts;
