@@ -103,5 +103,3 @@ set tide_vi_mode_icon_default D
 set tide_vi_mode_icon_insert I
 set tide_vi_mode_icon_replace R
 set tide_vi_mode_icon_visual V
-
-zoxide init fish | source

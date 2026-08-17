@@ -6,7 +6,6 @@
         # advanced core utils etc
         trash-cli # safer rm
         grc # colours - though probably unmaintained!
-        zoxide # z, autojump etc like
         eza # A modern replacement for ‘ls’
         dysk # modern df replacement
         caligula # TUI for disk imaging, as more user friendly dd alternative
@@ -92,6 +91,10 @@
           enable = true;
           enableFishIntegration = true;
         };
+        zoxide = {
+          enable = true;
+          enableFishIntegration = true;
+        };
         nh = {
           enable = true;
           clean.enable = true;
@@ -109,6 +112,10 @@
               overrideGpg = true;
             };
           };
+        };
+        navi = {
+          enable = true;
+          enableFishIntegration = true;
         };
       };
     };
