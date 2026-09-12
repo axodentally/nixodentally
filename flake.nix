@@ -39,6 +39,11 @@
     # but providing more features
     helix-gj1118.url = "github:gj1118/helix";
 
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # jadx-mcp-server.url = "path:./flakes/jadx-mcp-server";
 
     # snap support
