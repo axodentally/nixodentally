@@ -14,67 +14,69 @@ in
       ...
     }:
     {
-      imports = with inputs.self.modules.nixos; [
-        # system-type
-        system-default
-        disko
-        # system-desktop
+      imports =
+        with inputs.self.modules.nixos;
+        [
+          # system-type
+          system-default
+          disko
+          # system-desktop
 
-        # sops
+          sops
 
-        # users
-        # axo
+          # users
+          axo
 
-        # home manager
-        # homemanager
-      ];
-      # ++ [
-      #   {
-      #     home-manager.users.axo = {
-      #       imports = with inputs.self.modules.homeManager; [
-      #         # system-type
-      #         system-desktop
+          # home manager
+          homemanager
+        ]
+        ++ [
+          {
+            home-manager.users.axo = {
+              imports = with inputs.self.modules.homeManager; [
+                # system-type
+                #         system-desktop
 
-      #         # users
-      #         axo
+                # users
+                # axo
 
-      #         # home manager
-      #         homemanager
+                #         # home manager
+                homemanager
 
-      #         # programs
-      #         three-d-printing
-      #         chrome
-      #         firefox
-      #         ungoogled-chromium
-      #         communication
-      #         gnome
-      #         audacity
-      #         # kdenlive
-      #         multimedia
-      #         # room-eq-wizard
-      #         monitoring
-      #         office
-      #         galaxy-buds
-      #         productivity
-      #         rustdesk-client
-      #         # android-rev-eng
-      #         # jadx-mcp-server
-      #         # network-rev-eng
-      #         meta-shell # meta package
-      #         helix
-      #         kitty
-      #         ghostty
-      #         # AI stuff
-      #         opencode
-      #         zed-editor
-      #         mcp-nixos
-      #       ];
-      #       config = {
-      #         home.stateVersion = "23.11";
-      #       };
-      #     };
-      #   }
-      # ];
+                #         # programs
+                #         three-d-printing
+                #         chrome
+                #         firefox
+                #         ungoogled-chromium
+                #         communication
+                #         gnome
+                #         audacity
+                #         # kdenlive
+                #         multimedia
+                #         # room-eq-wizard
+                #         monitoring
+                #         office
+                #         galaxy-buds
+                #         productivity
+                #         rustdesk-client
+                #         # android-rev-eng
+                #         # jadx-mcp-server
+                #         # network-rev-eng
+                meta-shell # meta package
+                helix
+                #         kitty
+                #         ghostty
+                #         # AI stuff
+                #         opencode
+                #         zed-editor
+                #         mcp-nixos
+              ];
+              config = {
+                home.stateVersion = "26.05";
+              };
+            };
+          }
+        ];
 
       config = {
         # sops = {
@@ -128,16 +130,16 @@ in
         };
 
         users.users.axo = {
-          isNormalUser = true;
-          description = "Your Name";
-          extraGroups = [
-            "wheel"
-            "networkmanager"
-          ];
+          #   isNormalUser = true;
+          #   description = "Your Name";
+          #   extraGroups = [
+          #     "wheel"
+          #     "networkmanager"
+          #   ];
 
-          # openssh.authorizedKeys.keys = [
-          #   "ssh-ed25519 AAAA..."
-          # ];
+          openssh.authorizedKeys.keys = [
+            inputs.nix-secrets.pubkeys.chalco
+          ];
         };
 
         security.sudo.wheelNeedsPassword = true;
