@@ -4,7 +4,7 @@ let
 in
 {
   flake.modules.nixos.sops =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
       imports = [
         inputs.sops-nix.nixosModules.sops
@@ -17,7 +17,7 @@ in
       ];
 
       sops = {
-        defaultSopsFile = "${sopsFolder}/secrets.yaml";
+        defaultSopsFile = "${sopsFolder}/${config.networking.hostName}.yaml";
 
         age = {
           sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];

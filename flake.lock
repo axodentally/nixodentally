@@ -135,10 +135,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1785746534,
-        "narHash": "sha256-JLvoefNLuMK1RRugBANqw4LQy592BBGDedmVjiA9QkI=",
+        "lastModified": 1789253427,
+        "narHash": "sha256-6ch6IdE4gOGZnT0aXGj+DH9k/Bq0w7TiNXptIH7agnI=",
         "ref": "main",
-        "rev": "51fd8113f0f83367956e9e6cde7baa297c38bc48",
+        "rev": "e9c7da83383703358e398b0e9cf8d736940702f9",
         "shallow": true,
         "type": "git",
         "url": "https://chaos.expert/axo/nix-secrets.git"
