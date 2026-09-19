@@ -18,7 +18,8 @@
     };
     # private repo providing sops encrypted secrets
     nix-secrets = {
-      url = "git+https://chaos.expert/axo/nix-secrets.git?ref=main&shallow=1";
+      # url = "git+https://chaos.expert/axo/nix-secrets.git?ref=main&shallow=1";
+      url = "git+ssh://git@codeberg.org/axoaxo/nix-secrets.git?ref=main&shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
