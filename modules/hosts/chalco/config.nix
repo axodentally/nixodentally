@@ -88,6 +88,7 @@ in
               ];
               config = {
                 home.stateVersion = "23.11";
+                custom.git.credentialBackend = "libsecret";
               };
             };
           }

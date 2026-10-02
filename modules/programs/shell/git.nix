@@ -10,8 +10,20 @@
       config,
       ...
     }:
+    let
+      backend = config.custom.git.credentialBackend;
+      useOAuth = backend == "oauth";
+    in
     {
-      programs = {
+      options.custom.git.credentialBackend = lib.mkOption {
+        type = lib.types.enum [
+          "oauth"
+          "libsecret"
+        ];
+        default = "oauth";
+        description = "Default Git credential backend for this device.";
+      };
+      config.programs = {
         git-credential-oauth.enable = true;
 
         git = {
@@ -28,13 +40,18 @@
             };
             init.defaultBranch = "main";
             credential = {
-              helper = lib.mkBefore [
-                "${pkgs.git}/bin/git credential-cache --timeout ${toString (4 * 24 * 60 * 60)}"
-              ];
+              helper =
+                if useOAuth then
+                  lib.mkBefore [
+                    "${pkgs.git}/bin/git credential-cache --timeout ${toString (4 * 24 * 60 * 60)}"
+                  ]
+                else
+                  [ "libsecret" ];
               "https://github.com".helper = [
                 ""
                 "!${pkgs.gh}/bin/gh auth git-credential"
               ];
+
               "https://${inputs.nix-secrets.git-oauth.secrets-repo.domain}" = {
                 oauthClientId = "${inputs.nix-secrets.git-oauth.secrets-repo.clientId}";
                 oauthScopes = "read_repository write_repository";
@@ -42,6 +59,7 @@
                 oauthTokenURL = "/oauth/token";
                 oauthDeviceAuthURL = "/oauth/authorize_device";
               };
+
               "https://${inputs.nix-secrets.git-oauth.esa-repo.domain}" = {
                 oauthClientId = "${inputs.nix-secrets.git-oauth.esa-repo.clientId}";
                 oauthScopes = "read_repository write_repository";
