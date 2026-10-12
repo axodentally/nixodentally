@@ -24,6 +24,7 @@ in
           # system-desktop
 
           ssh-server
+          zswap
           sops
 
           # users
