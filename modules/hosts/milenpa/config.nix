@@ -1,9 +1,10 @@
 { inputs, ... }:
 let
   hostname = "milenpa";
+  primaryUser = "axo";
 in
 {
-  flake.meta.hosts.${hostname}.primaryUser = "axo";
+  flake.meta.hosts.${hostname}.${primaryUser} = "axo";
 
   flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "${hostname}";
   flake.modules.nixos.${hostname} =
@@ -22,6 +23,7 @@ in
           disko
           # system-desktop
 
+          ssh-server
           sops
 
           # users
@@ -38,7 +40,7 @@ in
                 #         system-desktop
 
                 # users
-                # axo
+                axo
 
                 #         # home manager
                 homemanager
@@ -73,22 +75,24 @@ in
               ];
               config = {
                 home.stateVersion = "26.05";
+                # TODO: make that nicer, so that default key is auto-discovered for every host
+                programs.git.settings.user.signingkey = "~/.ssh/axodentally-milenpa-2026-25519.pub";
               };
             };
           }
         ];
 
       config = {
-        # sops = {
-        #   secrets = {
-        #     "private_keys/axo" = {
-        #       path = "/home/axo/.ssh/axodentally-2026-25519";
-        #       mode = "600";
-        #       owner = "axo";
-        #       group = "users";
-        #     };
-        #   };
-        # };
+        sops = {
+          secrets = {
+            "private_keys/axo" = {
+              path = "/home/axo/.ssh/axodentally-milenpa-2026-25519";
+              mode = "600";
+              owner = "axo";
+              group = "users";
+            };
+          };
+        };
 
         networking.useDHCP = true;
         nix.settings.auto-optimise-store = true;
@@ -119,30 +123,9 @@ in
           tctiEnvironment.enable = true;
         };
 
-        services.openssh = {
-          enable = true;
-
-          settings = {
-            PasswordAuthentication = true;
-            KbdInteractiveAuthentication = false;
-            PermitRootLogin = "no";
-          };
-        };
-
-        users.users.axo = {
-          #   isNormalUser = true;
-          #   description = "Your Name";
-          #   extraGroups = [
-          #     "wheel"
-          #     "networkmanager"
-          #   ];
-
-          openssh.authorizedKeys.keys = [
-            inputs.nix-secrets.pubkeys.chalco
-          ];
-        };
-
-        security.sudo.wheelNeedsPassword = true;
+        users.users.${primaryUser}.openssh.authorizedKeys.keys = [
+          inputs.nix-secrets.pubkeys.chalco
+        ];
 
         environment.systemPackages = with pkgs; [
           git
