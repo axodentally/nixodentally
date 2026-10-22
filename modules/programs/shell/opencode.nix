@@ -6,6 +6,11 @@
         enable = true;
         enableMcpIntegration = true;
         package = pkgs.unstable.opencode;
+        settings = {
+          plugins = [
+            "opencode-tps-meter@latest"
+          ];
+        };
       };
     };
 }
