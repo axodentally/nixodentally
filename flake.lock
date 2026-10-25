@@ -150,6 +150,29 @@
         "url": "ssh://git@codeberg.org/axoaxo/nix-secrets.git"
       }
     },
+    "nix-skills": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790233682,
+        "narHash": "sha256-kpfzu06HYAMP/pmu3CRPQb+skIjZGByxvaUy7F08axw=",
+        "owner": "olafkfreund",
+        "repo": "nix-skills",
+        "rev": "f5c8e8b3b3255e323e5b84192d0b6ed2e79ef4f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "olafkfreund",
+        "repo": "nix-skills",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1791179034,
@@ -182,6 +205,23 @@
         "type": "github"
       }
     },
+    "nixpkgs-zotero-mcp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790120421,
+        "narHash": "sha256-ZQEkM784MrnKa7Fr1ODujvpvkAMsoPo0Q0XttP3vNQQ=",
+        "owner": "t4ccer",
+        "repo": "nixpkgs",
+        "rev": "c82a7c6978183c8cfe9e1636533b92634bf885ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "t4ccer",
+        "repo": "nixpkgs",
+        "rev": "c82a7c6978183c8cfe9e1636533b92634bf885ca",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1792615934,
@@ -206,8 +246,10 @@
         "import-tree": "import-tree",
         "nix-flatpak": "nix-flatpak",
         "nix-secrets": "nix-secrets",
+        "nix-skills": "nix-skills",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-zotero-mcp": "nixpkgs-zotero-mcp",
         "sops-nix": "sops-nix",
         "ucodenix": "ucodenix",
         "zen-browser": "zen-browser"
