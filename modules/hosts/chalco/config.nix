@@ -69,7 +69,7 @@ in
                 audacity
                 # kdenlive
                 multimedia
-                # room-eq-wizard
+                room-eq-wizard
                 monitoring
                 office
                 galaxy-buds
@@ -108,6 +108,8 @@ in
             };
           };
         };
+
+        boot.loader.systemd-boot.configurationLimit = 4;
 
         system.stateVersion = "23.11";
         fwupd.enableTestingRemotes = true;

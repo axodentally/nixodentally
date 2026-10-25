@@ -25,9 +25,6 @@ in
           generateKey = true;
         };
 
-        secrets = {
-          sample_password = { };
-        };
       };
     };
 
