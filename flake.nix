@@ -51,6 +51,11 @@
     #   # follows unstable. Not sure
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    nix-skills = {
+      url = "github:olafkfreund/nix-skills";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

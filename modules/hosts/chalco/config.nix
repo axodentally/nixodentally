@@ -85,6 +85,7 @@ in
                 opencode
                 zed-editor
                 mcp-nixos
+                nix-skills
               ];
               config = {
                 home.stateVersion = "23.11";
