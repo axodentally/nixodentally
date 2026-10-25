@@ -51,6 +51,17 @@
     #   # follows unstable. Not sure
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    # temporary: nixpkgs tree carrying the zotero-mcp packaging expressions
+    # (github:NixOS/nixpkgs/pull/563759) until the PR is merged into unstable.
+    # Only the three .nix expressions are used; all dependencies are built
+    # from the pinned nixpkgs-unstable package set. Remove once merged.
+    nixpkgs-zotero-mcp = {
+      # pinned to the current PR head commit; the branch gets force-pushed
+      url = "github:t4ccer/nixpkgs/c82a7c6978183c8cfe9e1636533b92634bf885ca";
+      flake = false; # we only want the .nix files, not its package set
+    };
+
     nix-skills = {
       url = "github:olafkfreund/nix-skills";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

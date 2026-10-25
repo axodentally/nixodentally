@@ -44,6 +44,7 @@ in
           gnome
           fonts
           wireshark
+          zotero-mcp
         ]
         ++ [
           {
@@ -85,6 +86,7 @@ in
                 opencode
                 zed-editor
                 mcp-nixos
+                zotero-mcp
                 nix-skills
               ];
               config = {
