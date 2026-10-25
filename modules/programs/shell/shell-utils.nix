@@ -42,6 +42,7 @@
         gawk
         zstd
         gnupg
+        jq
 
         nix-output-monitor # provides the command `nom`. works just like `nix` with more details log output
 
