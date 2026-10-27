@@ -39,6 +39,11 @@
     # but providing more features
     helix-gj1118.url = "github:gj1118/helix";
 
+    autoaspm = {
+      url = "git+https://git.notthebe.ee/notthebee/AutoASPM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # jadx-mcp-server.url = "path:./flakes/jadx-mcp-server";
 
     # snap support

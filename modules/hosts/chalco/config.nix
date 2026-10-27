@@ -20,6 +20,7 @@ in
           # system settings
           amd
           laptop-powersaving
+          autoaspm
           linux-latest
           flatpak # TODO: check if correctly defined in the module!
           key-remapping
