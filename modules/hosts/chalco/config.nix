@@ -87,6 +87,7 @@ in
                 zed-editor
                 mcp-nixos
                 zotero-mcp
+                zotlit-skills
                 nix-skills
               ];
               config = {
