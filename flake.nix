@@ -44,8 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # jadx-mcp-server.url = "path:./flakes/jadx-mcp-server";
-
     # snap support
     # nix-snapd.url = "github:nix-community/nix-snapd";
     # nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
