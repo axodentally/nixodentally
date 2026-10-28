@@ -6,6 +6,13 @@
         enable = true;
         enableMcpIntegration = true;
         package = pkgs.unstable.opencode;
+
+        # tools for the read-pdf skill (pdfinfo, pdftotext, pdftoppm);
+        # wrapped onto opencode's PATH only
+        extraPackages = [ pkgs.poppler-utils ];
+
+        skills.read-pdf = ./skills/read-pdf/SKILL.md;
+
         settings = {
           plugins = [
             "opencode-tps-meter@latest"
