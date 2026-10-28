@@ -45,7 +45,6 @@ in
           gnome
           fonts
           wireshark
-          zotero-mcp
         ]
         ++ [
           {
@@ -76,20 +75,14 @@ in
                 galaxy-buds
                 productivity
                 rustdesk-client
-                # android-rev-eng
-                # jadx-mcp-server
                 # network-rev-eng
                 meta-shell # meta package
                 helix
                 kitty
                 ghostty
                 # AI stuff
-                opencode
-                zed-editor
-                mcp-nixos
-                zotero-mcp
-                zotlit-skills
-                nix-skills
+                meta-ai # opencode + mcp-nixos + nix-skills (+ aichat, commented out)
+                meta-ai-literature # zotlit + zotero-mcp + read-pdf skill
               ];
               config = {
                 home.stateVersion = "23.11";

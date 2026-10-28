@@ -25,8 +25,8 @@ in
         helix-gj1118
         devenv
 
-        opencode
-        aichat
+        # AI stuff
+        meta-ai # opencode (+ aichat, commented out for now)
 
         openjdk21
       ];
