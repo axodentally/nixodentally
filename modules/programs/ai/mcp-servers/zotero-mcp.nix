@@ -21,38 +21,27 @@ in
         inherit (pkgs) config;
         system = pkgs.stdenv.hostPlatform.system;
         overlays = [
-          (ufinal: uprev:
+          (
+            ufinal: uprev:
             let
               # extend the python package set with the two deps that are
               # not (yet) in nixpkgs-unstable
               python3Packages = uprev.python3.pkgs.overrideScope (
                 pyFinal: _pyPrev: {
                   # pdf-inspector is not yet in nixpkgs
-                  pdf-inspector = pyFinal.callPackage
-                    "${prTree}/pkgs/development/python-modules/pdf-inspector/default.nix"
-                    { };
-                  # zotero-mcp needs pyzotero >= 1.14.0; upstream pins
-                  # uv_build<0.12.0 (nixpkgs-unstable now ships 0.12.5,
-                  # which builds it fine), so relax the version pin
-                  pyzotero =
-                    (pyFinal.callPackage
-                      "${prTree}/pkgs/development/python-modules/pyzotero/default.nix"
-                      { }
-                    ).overrideAttrs
-                      (old: {
-                        postPatch = (old.postPatch or "") + ''
-                          substituteInPlace pyproject.toml \
-                            --replace-fail "uv_build>=0.8.14,<0.12.0" "uv_build"
-                        '';
-                      });
+                  pdf-inspector =
+                    pyFinal.callPackage "${prTree}/pkgs/development/python-modules/pdf-inspector/default.nix"
+                      { };
+                  # zotero-mcp needs pyzotero >= 1.14.0
+                  pyzotero = pyFinal.callPackage "${prTree}/pkgs/development/python-modules/pyzotero/default.nix" { };
                 }
               );
             in
             {
               inherit python3Packages;
-              zotero-mcp = ufinal.callPackage
-                "${prTree}/pkgs/by-name/zo/zotero-mcp/package.nix"
-                { inherit python3Packages; };
+              zotero-mcp = ufinal.callPackage "${prTree}/pkgs/by-name/zo/zotero-mcp/package.nix" {
+                inherit python3Packages;
+              };
             }
           )
         ];

@@ -228,17 +228,17 @@
     "nixpkgs-zotero-mcp": {
       "flake": false,
       "locked": {
-        "lastModified": 1790120421,
-        "narHash": "sha256-ZQEkM784MrnKa7Fr1ODujvpvkAMsoPo0Q0XttP3vNQQ=",
+        "lastModified": 1792809909,
+        "narHash": "sha256-ebnfjAvnem0xhRnvtzpV+GCTraAd/w4aEVdIdJTT+dc=",
         "owner": "t4ccer",
         "repo": "nixpkgs",
-        "rev": "c82a7c6978183c8cfe9e1636533b92634bf885ca",
+        "rev": "5afddb7aba9564d397a240ffbe63ed3f71e44d69",
         "type": "github"
       },
       "original": {
         "owner": "t4ccer",
         "repo": "nixpkgs",
-        "rev": "c82a7c6978183c8cfe9e1636533b92634bf885ca",
+        "rev": "5afddb7aba9564d397a240ffbe63ed3f71e44d69",
         "type": "github"
       }
     },
