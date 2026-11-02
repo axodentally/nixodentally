@@ -5,6 +5,7 @@
       programs.yazi = {
         enable = true;
         enableFishIntegration = true;
+        shellWrapperName = "y";
 
         plugins = {
           inherit (pkgs.yaziPlugins)
