@@ -3,7 +3,7 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        mcp-nixos
+        unstable.mcp-nixos
       ];
 
       programs.mcp = {
