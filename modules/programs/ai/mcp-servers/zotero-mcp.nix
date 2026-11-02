@@ -15,7 +15,7 @@ in
   # imported here directly, so this module works the same on NixOS-integrated
   # and standalone home configurations.
   flake.modules.homeManager.zotero-mcp =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     let
       mcpPkgs = import inputs.nixpkgs-unstable {
         inherit (pkgs) config;
@@ -27,13 +27,29 @@ in
               # extend the python package set with the two deps that are
               # not (yet) in nixpkgs-unstable
               python3Packages = uprev.python3.pkgs.overrideScope (
-                pyFinal: _pyPrev: {
+                pyFinal: pyPrev: {
                   # pdf-inspector is not yet in nixpkgs
                   pdf-inspector =
                     pyFinal.callPackage "${prTree}/pkgs/development/python-modules/pdf-inspector/default.nix"
                       { };
                   # zotero-mcp needs pyzotero >= 1.14.0
                   pyzotero = pyFinal.callPackage "${prTree}/pkgs/development/python-modules/pyzotero/default.nix" { };
+                  # temporary: drop the (unused) posthog dependency from
+                  # chromadb. Upstream removed it with chroma-core/chroma#6489,
+                  # but nixpkgs-unstable still lists it, and posthog itself is
+                  # currently broken there (NixOS/nixpkgs#578265), which blocks
+                  # building chromadb (and thus zotero-mcp with semantic
+                  # search). Remove this override once NixOS/nixpkgs#580508
+                  # lands in nixos-unstable.
+                  chromadb = pyPrev.chromadb.overridePythonAttrs (old: {
+                    dependencies = lib.filter (d: d.pname or null != "posthog") old.dependencies;
+                  });
+                  # temporary: fastmcp — zotero-mcp's MCP framework — does not
+                  # support mcp >= 2 yet, which nixpkgs-unstable now ships
+                  # (marking fastmcp broken there). Use the in-tree mcp 1.x
+                  # expression until a fastmcp release supporting mcp 2 lands
+                  # in nixos-unstable.
+                  mcp = pyPrev.mcp_1;
                 }
               );
             in
