@@ -82,8 +82,21 @@
         ];
       };
 
-      swapDevices = [ ];
-      zramSwap.enable = true;
+      # Dedicated subvolume so the active swap file stays out of snapshots;
+      # the file itself is preallocated + NOCOW via `btrfs filesystem mkswapfile`:
+      #   sudo btrfs subvolume create /mnt/btrfs-top/@swap
+      #   sudo btrfs filesystem mkswapfile --size 4g --uuid clear /mnt/btrfs-top/@swap/swapfile
+      fileSystems."/.swapvol" = {
+        device = "/dev/disk/by-uuid/54f35b16-1c8d-43a4-868e-76ff9ee88db5";
+        fsType = "btrfs";
+        options = [
+          "subvol=@swap"
+          "noatime"
+        ];
+      };
+
+      swapDevices = [ { device = "/.swapvol/swapfile"; } ];
+      boot.zswap.enable = true;
 
       services.btrfs.autoScrub.enable = true;
     };
