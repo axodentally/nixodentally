@@ -4,6 +4,7 @@
     {
       home.packages = with pkgs; [
         planify # todo management
+        unstable.bitwarden-desktop
       ];
       services.flatpak.packages = [
         "io.github.mrvladus.List" # Gnome styled ToDos
