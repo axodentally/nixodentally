@@ -77,10 +77,10 @@
               installation_mode = "force_installed";
             };
             # Old Reddit Redirect
-            "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/old-reddit-redirect/latest.xpi";
-              installation_mode = "force_installed";
-            };
+            # "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}" = {
+            #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/old-reddit-redirect/latest.xpi";
+            #   installation_mode = "force_installed";
+            # };
             # Refined Github
             "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = {
               install_url = "https://addons.mozilla.org/firefox/downloads/latest/refined-github-/latest.xpi";
