@@ -45,6 +45,7 @@ in
           gnome
           fonts
           wireshark
+          bitwarden
         ]
         ++ [
           {
