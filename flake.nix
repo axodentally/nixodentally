@@ -61,7 +61,7 @@
     # from the pinned nixpkgs-unstable package set. Remove once merged.
     nixpkgs-zotero-mcp = {
       # pinned to the current PR head commit; the branch gets force-pushed
-      url = "github:t4ccer/nixpkgs/5afddb7aba9564d397a240ffbe63ed3f71e44d69";
+      url = "github:t4ccer/nixpkgs/5f4d21235925bfd3af3718d6bbd47b1b890f7bac";
       flake = false; # we only want the .nix files, not its package set
     };
 
