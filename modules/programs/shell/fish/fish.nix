@@ -47,9 +47,9 @@
             };
           };
           shellAliases = {
-            "ls" = "eza --group-directories-first --icons";
-            "ll" = "eza -lg --git --icons --octal-permissions --group-directories-first";
-            "la" = "eza -lga --git --icons --octal-permissions --group-directories-first";
+            "ls" = "eza --group-directories-first --icons always";
+            "ll" = "eza -lg --git --icons always --octal-permissions --group-directories-first";
+            "la" = "eza -lga --git --icons always --octal-permissions --group-directories-first";
             "lt" = "eza --tree --level=2";
             "cp" = "cp -v";
             "sl" = "ls";
