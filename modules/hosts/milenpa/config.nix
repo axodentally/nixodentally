@@ -32,6 +32,8 @@ in
 
           # home manager
           homemanager
+
+          ./_disko-data.nix
         ]
         ++ [
           {
