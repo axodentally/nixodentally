@@ -111,7 +111,10 @@ in
 
               # Leave this off for the first installation/boot.
               # Enable and enroll keys only after boot is confirmed.
-              secureBoot.enable = false;
+              # TODO: document how to enable secure boot and TPM unlock
+              # TODO: also check what PCRs should be checked for TPM unlock (4+7, 7 only, 4+7+8+9, idk)
+              # TODO: check if I should backup or move the signing keys in /var/lib/sbctl/ o nix-secrets
+              secureBoot.enable = true;
             };
           };
 
@@ -124,6 +127,16 @@ in
         security.tpm2 = {
           enable = true;
           tctiEnvironment.enable = true;
+        };
+
+        environment.etc."crypttab".text = ''
+          data1 /dev/disk/by-partlabel/disk-disk1-data1-luks /var/lib/luks-keys/data1.key luks
+          data2 /dev/disk/by-partlabel/disk-disk2-data2-luks /var/lib/luks-keys/data2.key luks
+        '';
+
+        services.btrfs.autoScrub = {
+          enable = true;
+          fileSystems = [ "/srv/storage" ];
         };
 
         users.users.${primaryUser}.openssh.authorizedKeys.keys = [
